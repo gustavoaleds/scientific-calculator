@@ -5,39 +5,65 @@ import math;
 
 #### CORES ####
 
-cor1 = "#feffff" #white
-cor2 = "#6f9fbd" #blue
-cor3 = "#38576b" #valor
+cor1 = "#3b3b3b"    #black
+cor2 = "#feffff"    #white
+cor3 = "#424345"    #black2
+cor4 = "#ECEFF1"    #grey
+cor5 = "#FFAB40"    #orange
 
-fundo = "#e8e6e6"
-cor10 = "#363434"
-cor11 = "#424345"
-
-cor4 = '#FFAB40'
-cor5 = '#FF333a'
-cor6 = '#6bd66f'
-cor7 = '#ab8918'
+#### JANELA PRINCIPAL ####
 
 janela = Tk()
-janela.title('')
-janela.geometry('235x289')
-janela.configure(bg=cor1)
+janela.title('Scientific Calculator')
+janela.geometry('235x310')
+janela.config(bg=cor1)
 
-style = ttk.Style(janela)
-style.theme_use("clam")
 
 #### FRAMES  ####
 
-ttk.Separator(janela, orient=HORIZONTAL).grid(row=0, columspan=1, ipadx=280)
+frame_tela = Frame(janela, width=235, height=50, bg=cor3)
+frame_tela.grid(row=0, column=0)
 
-frame_score = Frame(janela, width=300, height=56, bg=cor3, pady=0, padx=0, relief="flat",)
-frame_score.grid(row=1, column=0, sticky=NW)
-
-frame_cientifica = Frame(janela, width=300, height=86, bg=cor3, pady=0, padx=0, relief="flat",)
-frame_cientifica.grid(row=2, column=0, sticky=NW)
-
-frame_quadros = Frame(janela, width=300, height=340, bg=fundo, pady=0, padx=0, relief="flat",)
-frame_quadros.grid(row=3, column=0, sticky=NW)
-
+frame_corpo = Frame(janela, width=235, height=268)
+frame_corpo.grid(row=1, column=0)
 #### FUNÇÕES ####
 
+def entering_values(event):
+    global all_vallues
+    all_values = all_values +str(event)
+    value_text.set(all_values)
+
+    def calculate():
+        global all_values
+
+        global texto
+
+        texto = all_values
+
+        modulos =['math.tan','math.sin','math.cos','math.sqrt','math.log','math.log10','math.e','math.pow','math.pi','math.radian']
+
+        for i in modulos:
+            if i=='math.tan':
+                texto = texto.replace("tan", i)
+            
+            if i=='math.sin':
+                texto = texto.replace("sin", i)
+
+            if i=='math.cos':
+                texto = texto.replace("cos", i)
+            
+            if i=='math.sqrt':
+                texto = texto.replace("sqrt", i)
+
+            #-------------------------------------
+        
+            if i=='math.log':
+                texto = texto.replace("log", i)
+
+            if i=='math.log10':
+                texto = texto.replace("log10", i)
+
+            if i=='math.e':
+                texto = texto.replace("e", i)
+
+janela.mainloop()
