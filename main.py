@@ -13,57 +13,110 @@ cor5 = "#FFAB40"    #orange
 
 #### JANELA PRINCIPAL ####
 
-janela = Tk()
-janela.title('Scientific Calculator')
-janela.geometry('235x310')
-janela.config(bg=cor1)
+screen = Tk()
+screen.title('Scientific Calculator')
+screen.geometry('235x288')
+screen.config(bg=cor1)
 
 
 #### FRAMES  ####
 
-frame_tela = Frame(janela, width=235, height=50, bg=cor3)
-frame_tela.grid(row=0, column=0)
+frame_screen = Frame(screen, width=300, height=56, bg=cor3)
+frame_screen.grid(row=0, column=0)
 
-frame_corpo = Frame(janela, width=235, height=268)
-frame_corpo.grid(row=1, column=0)
+frame_scientific = Frame(screen, width=300, height=86)
+frame_scientific.grid(row=1, column=0)
+
+frame_body = Frame(screen, width=300, height=340)
+frame_body.grid(row=2, column=0)
+
 #### FUNÇÕES ####
 
-def entering_values(event):
-    global all_vallues
-    all_values = all_values +str(event)
-    value_text.set(all_values)
+global all_values
 
-    def calculate():
-        global all_values
+todos_valores = ''
+text = StringVar()
 
-        global texto
+def enter_values(event):
+    global all_values
 
-        texto = all_values
+    all_values = all_values + str(event)
+    text.set(todos_valores)
 
-        modulos =['math.tan','math.sin','math.cos','math.sqrt','math.log','math.log10','math.e','math.pow','math.pi','math.radian']
+####CONFIGURAÇÕES DE FRAME DA TELA RESULTADO ####
 
-        for i in modulos:
-            if i=='math.tan':
-                texto = texto.replace("tan", i)
-            
-            if i=='math.sin':
-                texto = texto.replace("sin", i)
+label_screen = Label(frame_screen, width=16, height=2,textvariable='text', bd=0, padx=7, anchor='e',  justify=RIGHT,font=('Ivy 18'), bg=cor3, fg=cor2)
+label_screen.place(x=0, y=0)
 
-            if i=='math.cos':
-                texto = texto.replace("cos", i)
-            
-            if i=='math.sqrt':
-                texto = texto.replace("sqrt", i)
+####CONFIGURANDO FRAME CIENTIFICO ####
 
-            #-------------------------------------
-        
-            if i=='math.log':
-                texto = texto.replace("log", i)
+b_0 = Button(frame_scientific, text='tan', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor1, fg=cor2)
+b_0.place(x=0, y=1)
+b_1 = Button(frame_scientific, text='sin', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor1, fg=cor2)
+b_1.place(x=59, y=1)
+b_2 = Button(frame_scientific, text='cos', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor1, fg=cor2)
+b_2.place(x=118, y=1)
+b_3 = Button(frame_scientific, text='sqrt', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor1, fg=cor2)
+b_3.place(x=177, y=1)
 
-            if i=='math.log10':
-                texto = texto.replace("log10", i)
+b_0 = Button(frame_scientific, text='log', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor1, fg=cor2)
+b_0.place(x=0, y=29)
+b_1 = Button(frame_scientific, text='log10', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor1, fg=cor2)
+b_1.place(x=59, y=29)
+b_2 = Button(frame_scientific, text='e', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor1, fg=cor2)
+b_2.place(x=118, y=29)
+b_3 = Button(frame_scientific, text='pow', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor1, fg=cor2)
+b_3.place(x=177, y=29)
 
-            if i=='math.e':
-                texto = texto.replace("e", i)
+b_0 = Button(frame_scientific, text='pi', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor1, fg=cor2)
+b_0.place(x=0, y=58)
+b_1 = Button(frame_scientific, text=',', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor1, fg=cor2)
+b_1.place(x=59, y=58)
+b_2 = Button(frame_scientific, text='(', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor1, fg=cor2)
+b_2.place(x=118, y=58)
+b_3 = Button(frame_scientific, text=')', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor1, fg=cor2)
+b_3.place(x=177, y=58)
 
-janela.mainloop()
+####CONFIGURANDO FRAME DE CORPO ####
+b_0 = Button(frame_body, text='C', width=14, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor3, fg=cor2)
+b_0.place(x=0, y=1)
+b_1 = Button(frame_body, text='%', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor3, fg=cor2)
+b_1.place(x=118, y=1)
+b_2 = Button(frame_body, text='/', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor3, fg=cor2)
+b_2.place(x=177, y=1)
+
+b_0 = Button(frame_body, text='7', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor1, fg=cor2)
+b_0.place(x=0, y=30)
+b_1 = Button(frame_body, text='8', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor1, fg=cor2)
+b_1.place(x=59, y=30)
+b_2 = Button(frame_body, text='9', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor1, fg=cor2)
+b_2.place(x=118, y=30)
+b_3 = Button(frame_body, text='*', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor3, fg=cor2)
+b_3.place(x=177, y=30)
+
+b_0 = Button(frame_body, text='4', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor1, fg=cor2)
+b_0.place(x=0, y=59)
+b_1 = Button(frame_body, text='5', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor1, fg=cor2)
+b_1.place(x=59, y=59)
+b_2 = Button(frame_body, text='6', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor1, fg=cor2)
+b_2.place(x=118, y=59)
+b_3 = Button(frame_body, text='-', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor3, fg=cor2)
+b_3.place(x=177, y=59)
+
+b_0 = Button(frame_body, text='1', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor1, fg=cor2)
+b_0.place(x=0, y=88)
+b_1 = Button(frame_body, text='2', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor1, fg=cor2)
+b_1.place(x=59, y=88)
+b_2 = Button(frame_body, text='3', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor1, fg=cor2)
+b_2.place(x=118, y=88)
+b_3 = Button(frame_body, text='+', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor3, fg=cor2)
+b_3.place(x=177, y=88)
+
+b_0 = Button(frame_body, text='0', width=14, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor1, fg=cor2)
+b_0.place(x=0, y=116)
+b_1 = Button(frame_body, text='.', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor3, fg=cor2)
+b_1.place(x=118, y=116)
+b_2 = Button(frame_body, text='=', width=6, height=1, relief=RAISED, overrelief=RIDGE, font=('Ivy 10 bold'), bg=cor3, fg=cor2)
+b_2.place(x=177, y=116)
+
+screen.mainloop()
