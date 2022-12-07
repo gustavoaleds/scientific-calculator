@@ -1,5 +1,5 @@
 # SCIENTIFIC CALCULATOR
-<img align="center" src="https://images2.imgbox.com/1b/f7/kqGBS5gZ_o.png"/>
+<p align="center"><img align="center" src="https://cdn.discordapp.com/attachments/1049858882459156550/1049859448119771146/SPOILER_image.png"/><p>
 
 <p align="center"><img height='15' src='https://github.com/csmoore/country-flag-icons/blob/master/country-flags-4x3-png/br.png?raw=true'> <a href="#portuguese">Click here</a> for the portuguese version of this document.</P>
 
